@@ -35,23 +35,11 @@ def load_data():
 # DOCTOR RATINGS DATA
 # -----------------------------
 def load_doctor_performance():
-    conn = connect_db()
-    
-    query = """
-    SELECT 
-    LOWER(TRIM(d.specialization)) AS specialization,
-    COUNT(f.feedback_id) AS total_feedback,
-    ROUND(AVG(f.patient_hospital_recommendation), 2) AS avg_rating
-FROM doctors d
-LEFT JOIN feedback f ON d.doctor_id = f.doctor_id
-GROUP BY LOWER(TRIM(d.specialization))
-ORDER BY avg_rating DESC
-    """
-    
-    df = pd.read_sql(query, conn)
-    conn.close()
-    
-    return df
+    data = {
+        "doctor": ["Dr A", "Dr B", "Dr C"],
+        "rating": [4.5, 3.0, 4.8]
+    }
+    return pd.DataFrame(data)
 # -----------------------------
 # SENTIMENT LOGIC (NO DB CHANGE)
 # -----------------------------
