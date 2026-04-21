@@ -7,29 +7,30 @@ import matplotlib.pyplot as plt
 # DATABASE CONNECTION
 # -----------------------------
 def connect_db():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="hospital management"
-    )
+    return None
 
 # -----------------------------
 # LOAD DATA
 # -----------------------------
 def load_data():
-    conn = connect_db()
-    df = pd.read_sql("""
-        SELECT *,
-        CASE 
-            WHEN patient_hospital_recommendation >= 4 THEN 'Positive'
-            WHEN patient_hospital_recommendation = 3 THEN 'Neutral'
-            ELSE 'Negative'
-        END AS sentiment
-        FROM feedback
-    """, conn)
-    conn.close()
-    return df
+    data = {
+        "feedback": [
+            "Great service",
+            "Very slow waiting time",
+            "Excellent doctors",
+            "Poor communication",
+            "Clean environment"
+        ],
+        "sentiment": [
+            "Positive",
+            "Negative",
+            "Positive",
+            "Negative",
+            "Positive"
+        ]
+    }
+    return pd.DataFrame(data)
+    
 # -----------------------------
 # DOCTOR RATINGS DATA
 # -----------------------------
