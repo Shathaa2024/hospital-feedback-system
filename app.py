@@ -36,8 +36,14 @@ def load_data():
 # -----------------------------
 def load_doctor_performance():
     data = {
-        "doctor": ["Dr A", "Dr B", "Dr C"],
-        "rating": [4.5, 3.0, 4.8]
+        "specialization": [
+            "Psychiatry",
+            "Internal Medicine",
+            "Dermatology",
+            "Physiotherapy",
+            "Gastroenterology"
+        ],
+        "avg_rating": [5.0, 4.8, 4.6, 4.5, 4.2]
     }
     return pd.DataFrame(data)
 # -----------------------------
